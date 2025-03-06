@@ -1,428 +1,1149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Universities - VandyLaunch</title>
-    <style>
-        /* Variables for Vanderbilt colors */
-        :root {
-            --vandy-gold: #CEB888;
-            --vandy-black: #000000;
-            --vandy-white: #FFFFFF;
-            --section-padding: 4rem 2rem;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background: var(--vandy-black);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: var(--vandy-gold);
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--vandy-white);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--vandy-gold);
-        }
-
-        /* Header Section */
-        .header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://news.vanderbilt.edu/files/campus.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: var(--section-padding);
-            padding-top: 8rem;
-            color: var(--vandy-white);
-            text-align: center;
-            min-height: 40vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: var(--section-padding);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            color: var(--vandy-black);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        /* Benefits Grid */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .benefit-card {
-            background: #f8f8f8;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--vandy-gold);
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card h3 {
-            color: var(--vandy-black);
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Subscription Section */
-        .subscription {
-            background: var(--vandy-black);
-            color: var(--vandy-white);
-            padding: var(--section-padding);
-            text-align: center;
-        }
-
-        .subscription h2 {
-            color: var(--vandy-white);
-        }
-
-        .subscription p {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-
-        .pricing-table {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto;
-        }
-
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .pricing-card h3 {
-            color: var(--vandy-gold);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            color: var(--vandy-white);
-            margin-bottom: 1.5rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features-list li {
-            margin-bottom: 0.5rem;
-            color: var(--vandy-white);
-        }
-
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .stat-item {
-            padding: 2rem;
-            background: #f8f8f8;
-            border-radius: 10px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            color: var(--vandy-gold);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--vandy-black);
-            font-weight: 500;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #f8f8f8;
-            border-radius: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--vandy-black);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* Buttons */
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--vandy-gold);
-            color: var(--vandy-black);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-        .button.secondary {
-            background: transparent;
-            border: 2px solid var(--vandy-gold);
-            color: var(--vandy-gold);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .pricing-table {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VandyLaunch - Combined</title>
+  <style>
+    /* Root Variables & Global Reset */
+    :root {
+      --vandy-gold: #CEB888;
+      --vandy-black: #000000;
+      --vandy-white: #FFFFFF;
+      --section-padding: 4rem 2rem;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    /* Navigation */
+    nav {
+      background: var(--vandy-black);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: var(--vandy-gold);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--vandy-white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      color: var(--vandy-gold);
+    }
+    /* Section Wrappers */
+    section {
+      padding-top: 8rem; /* space for fixed nav */
+    }
+    .section {
+      padding: var(--section-padding);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      color: var(--vandy-black);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    /* Home / Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://brand.vanderbilt.edu/wp-content/uploads/sites/70/2019/02/kirkland_hall_1.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: var(--section-padding);
+      padding-top: 8rem;
+      color: var(--vandy-white);
+      text-align: center;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .button {
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .button-primary {
+      background: var(--vandy-gold);
+      color: var(--vandy-black);
+      border: none;
+    }
+    .button-secondary {
+      background: transparent;
+      color: var(--vandy-white);
+      border: 2px solid var(--vandy-gold);
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    /* Header for Subsections (About, Services, etc.) */
+    .header {
+      background-size: cover;
+      background-position: center;
+      padding: var(--section-padding);
+      padding-top: 8rem;
+      color: var(--vandy-white);
+      text-align: center;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    /* Grids & Cards */
+    .features-grid,
+    .service-grid,
+    .benefits-grid,
+    .pricing-table,
+    .stats-grid,
+    .team-grid,
+    .testimonial-grid,
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .features-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .service-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .benefits-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .pricing-table {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      text-align: center;
+    }
+    .team-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      text-align: center;
+    }
+    .testimonial-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    /* Card Styles */
+    .service-card,
+    .feature-card,
+    .benefit-card,
+    .opportunity-card,
+    .stat-item,
+    .price-card,
+    .testimonial-card,
+    .team-member,
+    .contact-info,
+    .contact-form {
+      background: #f8f8f8;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover,
+    .feature-card:hover,
+    .benefit-card:hover,
+    .opportunity-card:hover,
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    .service-card h3,
+    .feature-card h3,
+    .benefit-card h3,
+    .opportunity-card h3,
+    .team-member h3 {
+      color: var(--vandy-black);
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+    .service-card p,
+    .feature-card p,
+    .benefit-card p,
+    .opportunity-card p,
+    .team-member p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    /* FAQ Sections */
+    .faq, .faq-section {
+      padding: var(--section-padding);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      margin-bottom: 1.5rem;
+      background: #f8f8f8;
+      border-radius: 5px;
+      padding: 1.5rem;
+    }
+    .faq-item h3 {
+      color: var(--vandy-black);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .faq-item p {
+      color: #666;
+      line-height: 1.6;
+    }
+    /* CTA Section */
+    .cta {
+      background: var(--vandy-gold);
+      padding: var(--section-padding);
+      text-align: center;
+      color: var(--vandy-black);
+    }
+    /* Process Steps (Alumni) */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .process-step {
+      text-align: center;
+      padding: 2rem;
+      background: #f8f8f8;
+      border-radius: 10px;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--vandy-gold);
+      color: var(--vandy-black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-weight: bold;
+    }
+    /* Premium Features (VCs) */
+    .premium-features {
+      background: var(--vandy-black);
+      color: var(--vandy-white);
+      padding: var(--section-padding);
+    }
+    .premium-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .premium-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    .premium-icon {
+      color: var(--vandy-gold);
+      font-size: 1.5rem;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      color: var(--vandy-gold);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      color: var(--vandy-black);
+      font-weight: 500;
+    }
+    .price {
+      font-size: 2.5rem;
+      color: var(--vandy-white);
+      margin-bottom: 1.5rem;
+    }
+    /* Contact Form & Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    .contact-info {
+      padding: 2rem;
+      background: #f8f8f8;
+      border-radius: 10px;
+      text-align: left;
+    }
+    .contact-info h2 {
+      color: var(--vandy-black);
+      margin-bottom: 1.5rem;
+    }
+    .contact-method {
+      margin-bottom: 1.5rem;
+    }
+    .contact-method h3 {
+      color: var(--vandy-black);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-method p {
+      color: #666;
+      line-height: 1.6;
+    }
+    .contact-icon {
+      color: var(--vandy-gold);
+      font-size: 1.5rem;
+    }
+    .contact-form {
+      padding: 2rem;
+      background: #f8f8f8;
+      border-radius: 10px;
+    }
+    .contact-form h2 {
+      color: var(--vandy-black);
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--vandy-black);
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    /* Map Section */
+    .map-section {
+      padding: 4rem 2rem;
+      background: var(--vandy-black);
+      color: var(--vandy-white);
+    }
+    .map-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .map-container h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .map-frame {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+    /* Timeline (About Section) */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--vandy-gold);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    .timeline-item {
+      padding: 1rem 2rem;
+      position: relative;
+      width: 50%;
+      margin-bottom: 2rem;
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--vandy-gold);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .timeline-item:nth-child(odd)::after {
+      right: -10px;
+    }
+    .timeline-item:nth-child(even)::after {
+      left: -10px;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .features-grid,
+      .service-grid,
+      .benefits-grid,
+      .pricing-table,
+      .stats-grid,
+      .team-grid,
+      .testimonial-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline::after {
+        left: 31px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+      }
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      .timeline-item::after {
+        left: 21px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">VandyLaunch</a>
-            <div class="nav-links">
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="for-alumni.html">For Alumni</a>
-                <a href="for-universities.html">For Universities</a>
-                <a href="for-vcs.html">For VCs</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">VandyLaunch</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#for-alumni">For Alumni</a>
+        <a href="#for-universities">For Universities</a>
+        <a href="#for-vcs">For VCs</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-content">
-            <h1>VandyLaunch for Universities</h1>
-            <p>Empower your startup ecosystem with our proven platform</p>
+  <!-- Home Section -->
+  <section id="home">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Connect, Invest, and Grow with VandyLaunch</h1>
+        <p>The premier platform connecting Vanderbilt startups with alumni investors, strategic advisors, and technical cofounders. Join our exclusive network to raise capital and build the next generation of successful ventures.</p>
+        <div class="cta-buttons">
+          <a href="#services" class="button button-primary">Create Startup Profile</a>
+          <a href="#for-alumni" class="button button-secondary">Become an Investor</a>
         </div>
+      </div>
+    </div>
+    <!-- Features -->
+    <section class="features">
+      <div class="section-heading">
+        <h2>Why Choose VandyLaunch?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>SAFE Investments</h3>
+          <p>Connect with alumni investors through simple, standardized SAFE agreements with competitive terms.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Strategic Advisors</h3>
+          <p>Access a network of experienced alumni ready to provide guidance and industry expertise.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Technical Cofounders</h3>
+          <p>Find the perfect technical cofounder from our pool of talented Vanderbilt alumni and students.</p>
+        </div>
+        <div class="feature-card">
+          <h3>University Network</h3>
+          <p>Leverage the power of the Vanderbilt community to accelerate your startup's growth.</p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/Kirkland-Hall-1.jpg');">
+      <div class="header-content">
+        <h1>About VandyLaunch</h1>
+        <p>Connecting the next generation of Vanderbilt entrepreneurs with the resources they need to succeed</p>
+      </div>
     </header>
-
-    <!-- Benefits Section -->
+    <!-- Mission -->
     <section class="section">
-        <h2>Why Partner with VandyLaunch?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">🚀</div>
-                <h3>Accelerate Innovation</h3>
-                <p>Provide your startups with the tools and connections they need to succeed from day one.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🤝</div>
-                <h3>Strengthen Alumni Engagement</h3>
-                <p>Create meaningful connections between current students and successful alumni.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">💰</div>
-                <h3>Facilitate Investment</h3>
-                <p>Enable alumni to invest in student and faculty startups through standardized SAFE agreements.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📊</div>
-                <h3>Track Impact</h3>
-                <p>Monitor your startup ecosystem's growth with detailed analytics and reporting.</p>
-            </div>
-        </div>
+      <h2>Our Mission</h2>
+      <p>VandyLaunch is dedicated to bridging the gap between innovative Vanderbilt startups and the resources they need to thrive. We believe that great ideas deserve the right support, and our platform makes it easier than ever for startups to connect with alumni investors, strategic advisors, and technical cofounders.</p>
+      <p>Our goal is to create a thriving ecosystem where Vanderbilt entrepreneurs can access capital, expertise, and talent through their university network. By facilitating these connections, we're building a foundation for long-term success and strengthening the Vanderbilt community.</p>
     </section>
+    <!-- Timeline -->
+    <section class="section">
+      <h2>Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>2025 Q1</h3>
+          <p>Idea conception and initial planning by Vanderbilt alumni.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2025 Q2</h3>
+          <p>MVP development and early platform feature launch.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2025 Q3</h3>
+          <p>Expansion of services with strategic advisor and cofounder matching.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2025 Q4</h3>
+          <p>Official platform launch with comprehensive support for startups and investors.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Impact -->
+    <section class="section">
+      <h2>Our Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Startups Connected</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$5M+</div>
+          <div class="stat-label">Capital Raised</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Alumni Network</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Strategic Advisors</div>
+        </div>
+      </div>
+    </section>
+    <!-- Team -->
+    <section class="section">
+      <h2>Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="John Smith" />
+          <h3>John Smith</h3>
+          <p>Founder &amp; CEO</p>
+          <p>Vanderbilt Class of '15</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Sarah Johnson" />
+          <h3>Sarah Johnson</h3>
+          <p>Head of Operations</p>
+          <p>Vanderbilt Class of '17</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Michael Chen" />
+          <h3>Michael Chen</h3>
+          <p>Technical Lead</p>
+          <p>Vanderbilt Class of '16</p>
+        </div>
+      </div>
+    </section>
+  </section>
 
-    <!-- Subscription Section -->
+  <!-- Services Section -->
+  <section id="services">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/Vanderbilt-University-Virtual-Reality.jpg');">
+      <div class="header-content">
+        <h1>Our Services</h1>
+        <p>Comprehensive support for Vanderbilt startups at every stage</p>
+      </div>
+    </header>
+    <!-- Service Cards -->
+    <section class="services">
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">💰</div>
+          <h3>SAFE Investments</h3>
+          <p>Connect with alumni investors through standardized SAFE agreements. Raise capital efficiently with our transparent platform.</p>
+          <a href="#services" class="button">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Strategic Advisors</h3>
+          <p>Get guidance from experienced alumni in your industry. Access expertise to help navigate challenges and accelerate growth.</p>
+          <a href="#services" class="button">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3>Technical Cofounders</h3>
+          <p>Find the perfect technical partner from our network of talented Vanderbilt alumni and students.</p>
+          <a href="#services" class="button">Learn More</a>
+        </div>
+      </div>
+    </section>
+    <!-- Service Features -->
+    <section class="features">
+      <div class="features-container">
+        <h2>Platform Features</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Secure Transactions</h3>
+              <p>Safe and transparent investment process</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Verified Network</h3>
+              <p>Exclusive access to Vanderbilt alumni</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Expert Matching</h3>
+              <p>AI-powered advisor matching system</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Progress Tracking</h3>
+              <p>Real-time updates on fundraising goals</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ -->
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How does the SAFE investment process work?</h3>
+        <p>Our platform uses standardized SAFE (Simple Agreement for Future Equity) agreements. Startups can set their terms, and alumni can invest with as little as $1,000. We charge a 0.5% transaction fee on successful investments.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Who can be a strategic advisor?</h3>
+        <p>Experienced Vanderbilt alumni can apply to become strategic advisors. We verify their expertise and match them with startups in relevant industries.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do you match technical cofounders?</h3>
+        <p>We use a combination of skills matching, industry experience, and mutual interests to connect founders with potential technical cofounders from the Vanderbilt community.</p>
+      </div>
+    </section>
+    <!-- Services CTA -->
+    <section class="cta">
+      <h2>Ready to Get Started?</h2>
+      <p>Join our platform and access the resources you need to succeed</p>
+      <a href="#contact" class="button">Create Your Profile</a>
+    </section>
+  </section>
+
+  <!-- For Alumni Section -->
+  <section id="for-alumni">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/Alumni-Hall-Aerial.jpg');">
+      <div class="header-content">
+        <h1>For Vanderbilt Alumni</h1>
+        <p>Investment opportunities and ways to give back to the Vanderbilt startup community</p>
+      </div>
+    </header>
+    <!-- Opportunities -->
+    <section class="section">
+      <h2>Ways to Get Involved</h2>
+      <div class="opportunities">
+        <div class="opportunity-card">
+          <div class="opportunity-icon">💰</div>
+          <h3>Invest in Startups</h3>
+          <p>Support promising Vanderbilt startups through SAFE investments. Minimum investment starting at $1,000.</p>
+          <a href="#for-alumni" class="button">Start Investing</a>
+        </div>
+        <div class="opportunity-card">
+          <div class="opportunity-icon">🤝</div>
+          <h3>Become an Advisor</h3>
+          <p>Share your expertise and guide the next generation of Vanderbilt entrepreneurs.</p>
+          <a href="#for-alumni" class="button">Join as Advisor</a>
+        </div>
+        <div class="opportunity-card">
+          <div class="opportunity-icon">👥</div>
+          <h3>Find Co-founders</h3>
+          <p>Connect with talented founders and join exciting new ventures as a technical co-founder.</p>
+          <a href="#for-alumni" class="button">Explore Opportunities</a>
+        </div>
+      </div>
+    </section>
+    <!-- Investment Process -->
+    <section class="section">
+      <h2>Investment Process</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Create Profile</h3>
+          <p>Sign up and verify your Vanderbilt alumni status</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Browse Startups</h3>
+          <p>Explore vetted investment opportunities</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Invest</h3>
+          <p>Make SAFE investments with transparent terms</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Track Progress</h3>
+          <p>Monitor your investments and startup updates</p>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="section">
+        <h2>Alumni Success Stories</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>"I've invested in three Vanderbilt startups through VandyLaunch, and it's been incredibly rewarding to support fellow alumni while diversifying my portfolio."</p>
+            <div class="testimonial-author">- Sarah Chen, Class of '12</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"As an advisor, I've helped multiple startups navigate their early challenges. It's a great way to give back to the Vanderbilt community."</p>
+            <div class="testimonial-author">- Michael Torres, Class of '08</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"The platform made it easy to connect with a promising startup as a technical co-founder. Now we're building something amazing together."</p>
+            <div class="testimonial-author">- David Park, Class of '15</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Alumni CTA -->
+    <section class="cta">
+      <h2>Ready to Make an Impact?</h2>
+      <p>Join our growing community of alumni investors and mentors</p>
+      <div>
+        <a href="#contact" class="button">Create Investor Profile</a>
+        <a href="#about" class="button secondary">Learn More</a>
+      </div>
+    </section>
+  </section>
+
+  <!-- For Universities Section -->
+  <section id="for-universities">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/campus.jpg');">
+      <div class="header-content">
+        <h1>VandyLaunch for Universities</h1>
+        <p>Empower your startup ecosystem with our proven platform</p>
+      </div>
+    </header>
+    <!-- Benefits -->
+    <section class="section">
+      <h2>Why Partner with VandyLaunch?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚀</div>
+          <h3>Accelerate Innovation</h3>
+          <p>Provide your startups with the tools and connections they need to succeed from day one.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <h3>Strengthen Alumni Engagement</h3>
+          <p>Create meaningful connections between current students and successful alumni.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Facilitate Investment</h3>
+          <p>Enable alumni to invest in student and faculty startups through standardized SAFE agreements.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <h3>Track Impact</h3>
+          <p>Monitor your startup ecosystem's growth with detailed analytics and reporting.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Subscription Plans & Demo -->
     <section class="subscription">
-        <div class="section">
-            <h2>Subscription Plans</h2>
-            <p>Choose the plan that best fits your university's needs</p>
-            <div class="pricing-table">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">$5,000/year</div>
-                    <ul class="features-list">
-                        <li>Up to 50 startup profiles</li>
-                        <li>Basic analytics</li>
-                        <li>Email support</li>
-                        <li>Standard branding options</li>
-                    </ul>
-                    <a href="#" class="button">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Professional</h3>
-                    <div class="price">$10,000/year</div>
-                    <ul class="features-list">
-                        <li>Unlimited startup profiles</li>
-                        <li>Advanced analytics</li>
-                        <li>Priority support</li>
-                        <li>Custom branding</li>
-                        <li>API access</li>
-                    </ul>
-                    <a href="#" class="button">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">Contact Us</div>
-                    <ul class="features-list">
-                        <li>All Professional features</li>
-                        <li>Custom integration</li>
-                        <li>Dedicated support</li>
-                        <li>Custom features</li>
-                        <li>Multi-campus support</li>
-                    </ul>
-                    <a href="#" class="button secondary">Contact Sales</a>
-                </div>
-            </div>
+      <div class="section">
+        <h2>Subscription Plans</h2>
+        <p>Choose the plan that best fits your university's needs</p>
+        <div class="pricing-table">
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">$5,000/year</div>
+            <ul class="features-list">
+              <li>Up to 50 startup profiles</li>
+              <li>Basic analytics</li>
+              <li>Email support</li>
+              <li>Standard branding options</li>
+            </ul>
+            <a href="#for-universities" class="button">Get Started</a>
+          </div>
+          <div class="pricing-card">
+            <h3>Professional</h3>
+            <div class="price">$10,000/year</div>
+            <ul class="features-list">
+              <li>Unlimited startup profiles</li>
+              <li>Advanced analytics</li>
+              <li>Priority support</li>
+              <li>Custom branding</li>
+              <li>API access</li>
+            </ul>
+            <a href="#for-universities" class="button">Get Started</a>
+          </div>
+          <div class="pricing-card">
+            <h3>Enterprise</h3>
+            <div class="price">Contact Us</div>
+            <ul class="features-list">
+              <li>All Professional features</li>
+              <li>Custom integration</li>
+              <li>Dedicated support</li>
+              <li>Custom features</li>
+              <li>Multi-campus support</li>
+            </ul>
+            <a href="#for-universities" class="button secondary">Contact Sales</a>
+          </div>
         </div>
+      </div>
     </section>
-
-    <!-- Stats Section -->
+    <!-- Impact Stats -->
     <section class="section">
-        <h2>Platform Impact</h2>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Active Startups</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">$5M+</div>
-                <div class="stat-label">Capital Raised</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Alumni Investors</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Successful Exits</div>
-            </div>
+      <h2>Platform Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Active Startups</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-number">$5M+</div>
+          <div class="stat-label">Capital Raised</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Alumni Investors</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Successful Exits</div>
+        </div>
+      </div>
     </section>
-
-    <!-- Contact Form -->
+    <!-- Demo Form -->
     <section class="section">
-        <h2>Schedule a Demo</h2>
-        <div class="contact-form">
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="university">University</label>
-                    <input type="text" id="university" name="university" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="button">Request Demo</button>
-            </form>
-        </div>
+      <h2>Schedule a Demo</h2>
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name-univ">Name</label>
+            <input type="text" id="name-univ" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="university">University</label>
+            <input type="text" id="university" name="university" required>
+          </div>
+          <div class="form-group">
+            <label for="email-univ">Email</label>
+            <input type="email" id="email-univ" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message-univ">Message</label>
+            <textarea id="message-univ" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="button">Request Demo</button>
+        </form>
+      </div>
     </section>
+  </section>
+
+  <!-- For VCs Section -->
+  <section id="for-vcs">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/financial-district.jpg');">
+      <div class="header-content">
+        <h1>For Venture Capitalists</h1>
+        <p>Access pre-screened, high-potential startups from top universities</p>
+      </div>
+    </header>
+    <!-- VC Features -->
+    <section class="section">
+      <h2>Why VandyLaunch for VCs?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Pre-Screened Deals</h3>
+          <p>Access vetted startups that have already received alumni backing and validation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Advanced Analytics</h3>
+          <p>Track startup metrics, growth indicators, and investment opportunities in real-time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Multi-University Access</h3>
+          <p>Source deals from multiple top universities through a single platform.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Direct Connections</h3>
+          <p>Connect directly with founders and alumni investors for seamless deal flow.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Premium VC Features -->
+    <section class="premium-features">
+      <div class="section">
+        <h2>Premium VC Features</h2>
+        <div class="premium-list">
+          <div class="premium-item">
+            <div class="premium-icon">✓</div>
+            <div>
+              <h3>Deal Flow Management</h3>
+              <p>Organize and track potential investments with our comprehensive pipeline tools.</p>
+            </div>
+          </div>
+          <div class="premium-item">
+            <div class="premium-icon">✓</div>
+            <div>
+              <h3>Custom Alerts</h3>
+              <p>Get notified when startups matching your investment criteria join the platform.</p>
+            </div>
+          </div>
+          <div class="premium-item">
+            <div class="premium-icon">✓</div>
+            <div>
+              <h3>Investment Analytics</h3>
+              <p>Track portfolio performance and startup metrics in real-time.</p>
+            </div>
+          </div>
+          <div class="premium-item">
+            <div class="premium-icon">✓</div>
+            <div>
+              <h3>API Access</h3>
+              <p>Integrate our platform data with your existing systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- VC Metrics -->
+    <section class="section">
+      <h2>Platform Metrics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Active Startups</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$5M+</div>
+          <div class="stat-label">Capital Raised</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Successful Exits</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">85%</div>
+          <div class="stat-label">Follow-on Rate</div>
+        </div>
+      </div>
+    </section>
+    <!-- VC Pricing -->
+    <section class="pricing">
+      <div class="section">
+        <h2>VC Premium Subscription</h2>
+        <div class="price-card">
+          <h3>Annual Premium Access</h3>
+          <div class="price-amount">$25,000</div>
+          <div class="price-period">per year</div>
+          <ul class="price-features">
+            <li>Unlimited startup profile access</li>
+            <li>Advanced analytics dashboard</li>
+            <li>Custom deal flow management</li>
+            <li>Priority startup introductions</li>
+            <li>API access for integration</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <a href="#for-vcs" class="button">Request Access</a>
+        </div>
+      </div>
+    </section>
+    <!-- VC CTA -->
+    <section class="cta">
+      <h2>Ready to Expand Your Deal Flow?</h2>
+      <p>Join our network of leading venture capital firms sourcing the next generation of successful startups.</p>
+      <div>
+        <a href="#contact" class="button">Schedule a Demo</a>
+        <a href="#about" class="button secondary">Learn More</a>
+      </div>
+    </section>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <!-- Header -->
+    <header class="header" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://news.vanderbilt.edu/files/Vanderbilt-Alumni-Hall.jpg');">
+      <div class="header-content">
+        <h1>Contact Us</h1>
+        <p>Get in touch with the VandyLaunch team</p>
+      </div>
+    </header>
+    <!-- Contact Grid -->
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <div class="contact-method">
+          <h3><span class="contact-icon">📍</span> Address</h3>
+          <p>Innovation Center<br>2414 Highland Avenue<br>Nashville, TN 37212</p>
+        </div>
+        <div class="contact-method">
+          <h3><span class="contact-icon">📞</span> Phone</h3>
+          <p>+1 (615) 555-0123</p>
+        </div>
+        <div class="contact-method">
+          <h3><span class="contact-icon">✉️</span> Email</h3>
+          <p>contact@vandylaunch.com</p>
+        </div>
+        <div class="contact-method">
+          <h3><span class="contact-icon">⏰</span> Hours</h3>
+          <p>Monday - Friday: 9:00 AM - 5:00 PM CST</p>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name-contact">Name</label>
+            <input type="text" id="name-contact" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email-contact">Email</label>
+            <input type="email" id="email-contact" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="startup">Startup Inquiry</option>
+              <option value="investor">Investor Information</option>
+              <option value="university">University Partnership</option>
+              <option value="vc">VC Access</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message-contact">Message</label>
+            <textarea id="message-contact" name="message" required></textarea>
+          </div>
+          <button type="submit" class="button">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <!-- Map -->
+    <section class="map-section">
+      <div class="map-container">
+        <h2>Our Location</h2>
+        <iframe 
+          class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393436651391!2d-86.80308688447647!3d36.14447981257275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466a37e4a7841%3A0x1ac07383b1d93bc3!2sVanderbilt%20University!5e0!3m2!1sen!2sus!4v1646456451234!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How can I join VandyLaunch as a startup?</h3>
+        <p>Create a profile through our platform and submit your startup information. Our team will review your application and get back to you within 48 hours.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What are the requirements for investors?</h3>
+        <p>Investors must be verified Vanderbilt alumni or accredited investors. Complete our investor verification process to get started.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I schedule a demo?</h3>
+        <p>Use our contact form above or email us directly at demos@vandylaunch.com to schedule a platform demonstration.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What support do you offer universities?</h3>
+        <p>We provide full platform customization, technical support, and dedicated account management for university partners.</p>
+      </div>
+    </section>
+  </section>
 </body>
 </html>
